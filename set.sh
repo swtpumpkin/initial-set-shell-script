@@ -62,5 +62,13 @@ echo "\n" >> ~/.zshrc
 echo "# zsh-autosuggestions" >> ~/.zshrc
 echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 
+echo -n "Enter git user name: "
+read GitUserName
+git config --global user.name "$GitUserName"
+
+echo -n "Enter git user email: "
+read GitUserEmail
+git config --global user.email $GitUserEmail
+
 # 끝!
 echo "Done!"

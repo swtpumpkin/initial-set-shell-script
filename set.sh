@@ -14,26 +14,26 @@ echo "Source bash_profile ..."
 source ~/.bash_profile
 
 echo "Installing tree ..."
-brew install tree
+sudo brew install tree
 
 echo "Adding tree path ..."
 echo "\n" >> ~/.zshrc
 echo "alias tree=\"find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'\"" >> ~/.zshrc
 
 echo "Installing zsh ..."
-brew install zsh
+sudo brew install zsh
 
 echo "Adding zsh path ..."
 sudo sh -c "echo $(which zsh) >> /etc/shells"
 
 echo "Recognize path/zsh ..."
-chsh -s path/zsh
+sudo chsh -s path/zsh
 
 echo "Installing oh-my-zsh ..."
 sudo curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 
 echo "Installing zsh-syntax-highlighting ..."
-brew install zsh-syntax-highlighting
+sudo brew install zsh-syntax-highlighting
 
 echo "Adding zsh-syntax-highlighting path ..."
 echo "\n" >> ~/.zshrc
@@ -55,7 +55,7 @@ echo "export NVM_DIR=\"$HOME/.nvm\"" >> ~/.zshrc
 echo "[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" # This loads nvm" >> ~/.zshrc
 
 echo "Installing zsh-autosuggestions ..."
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+sudo git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 echo "Adding zsh-autosuggestions path ..."
 echo "\n" >> ~/.zshrc

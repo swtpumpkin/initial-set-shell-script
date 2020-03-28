@@ -62,6 +62,18 @@ echo "\n" >> ~/.zshrc
 echo "# zsh-autosuggestions" >> ~/.zshrc
 echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 
+echo "Source zshrc ..."
+source ~/.zshrc
+
+echo "Setting won to backtick ..."
+sudo mkdir ~/Library/KeyBindings
+sudo chmod -R 777 ~/Library/KeyBindings
+sudo touch ~/Library/KeyBindings/DefaultkeyBinding.dict
+sudo chmod -R 777 ~/Library/KeyBindings/DefaultkeyBinding.dict
+sudo echo "{" >> ~/Library/KeyBindings/DefaultkeyBinding.dict
+sudo echo "  \"₩\" = (\"insertText:\", \"\`\");" >> ~/Library/KeyBindings/DefaultkeyBinding.dict
+sudo echo "}" >> ~/Library/KeyBindings/DefaultkeyBinding.dict
+
 echo -n "Enter git user name: "
 read GitUserName
 git config --global user.name "$GitUserName"

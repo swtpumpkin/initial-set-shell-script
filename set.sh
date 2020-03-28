@@ -74,6 +74,11 @@ sudo echo "{" >> ~/Library/KeyBindings/DefaultkeyBinding.dict
 sudo echo "  \"₩\" = (\"insertText:\", \"\`\");" >> ~/Library/KeyBindings/DefaultkeyBinding.dict
 sudo echo "}" >> ~/Library/KeyBindings/DefaultkeyBinding.dict
 
+echo -n "What kind of used node version? (ex: v12 or 12.16.1): "
+read NodeVersion
+nvm install $NodeVersion
+nvm alias default $NodeVersion
+
 echo -n "Enter git user name: "
 read GitUserName
 git config --global user.name "$GitUserName"

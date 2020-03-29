@@ -1,10 +1,10 @@
 #! /bin/bash
 
-echo "Installing brew..."
+echo "Installing brew ..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Installing nvm ..."
-sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 echo "Adding nvm path ..."
 echo "export NVM_DIR="$HOME/.nvm"" >> ~/.bash_profile
@@ -13,32 +13,37 @@ echo "[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" # This loads nvm" >> ~
 echo "Source bash_profile ..."
 source ~/.bash_profile
 
-echo "Installing tree ..."
-sudo brew install tree
+which -s brew
+if [[ $? != 0 ]] ; then
+  echo "Not Installed brew ..."
+else
+  echo "Installing tree ..."
+  brew install tree
 
-echo "Adding tree path ..."
-echo "\n" >> ~/.zshrc
-echo "alias tree=\"find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'\"" >> ~/.zshrc
+  echo "Adding tree path ..."
+  echo "\n" >> ~/.zshrc
+  echo "alias tree=\"find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'\"" >> ~/.zshrc
 
-echo "Installing zsh ..."
-sudo brew install zsh
+  echo "Installing zsh ..."
+  brew install zsh
 
-echo "Adding zsh path ..."
-sudo sh -c "echo $(which zsh) >> /etc/shells"
+  echo "Adding zsh path ..."
+  echo "export PATH=\"/usr/local/opt/ncurses/bin:$PATH\"" >> ~/.zshrc
+  
+  echo "Recognize path/zsh ..."
+  sudo chsh -s path/zsh
 
-echo "Recognize path/zsh ..."
-sudo chsh -s path/zsh
+  echo "Installing zsh-syntax-highlighting ..."
+  brew install zsh-syntax-highlighting
+
+  echo "Adding zsh-syntax-highlighting path ..."
+  echo "\n" >> ~/.zshrc
+  echo "# zsh-syntax-highlighting path" >> ~/.zshrc
+  echo "source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+fi
 
 echo "Installing oh-my-zsh ..."
 sudo curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-
-echo "Installing zsh-syntax-highlighting ..."
-sudo brew install zsh-syntax-highlighting
-
-echo "Adding zsh-syntax-highlighting path ..."
-echo "\n" >> ~/.zshrc
-echo "# zsh-syntax-highlighting path" >> ~/.zshrc
-echo "source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 
 echo "Setting terminal name space ..."
 echo "\n" >> ~/.zshrc

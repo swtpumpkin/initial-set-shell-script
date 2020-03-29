@@ -1,8 +1,5 @@
 #! /bin/bash
 
-echo "Installing brew ..."
-sudo /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
 echo "Installing nvm ..."
 sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 

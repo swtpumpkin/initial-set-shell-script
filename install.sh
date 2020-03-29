@@ -24,6 +24,9 @@ echo "Start Brew Install ..." \
 && echo "Start backtick Set ..." \
 && bash backtick.sh \
 
+&& echo "Start bullet train Set ..." \
+&& bash bulletTrain.sh \
+
 && echo "Start Node Set ..." \
 && bash node.sh \
 

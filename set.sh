@@ -79,10 +79,14 @@ sudo echo "{" >> ~/Library/KeyBindings/DefaultkeyBinding.dict
 sudo echo "  \"₩\" = (\"insertText:\", \"\`\");" >> ~/Library/KeyBindings/DefaultkeyBinding.dict
 sudo echo "}" >> ~/Library/KeyBindings/DefaultkeyBinding.dict
 
-echo -n "What kind of used node version? (ex: v12 or 12.16.1): "
-read NodeVersion
-nvm install $NodeVersion
-nvm alias default $NodeVersion
+if [[ -s $HOME/.nvm/nvm.sh ]] ; then
+  echo -n "What kind of used node version? (ex: v12 or 12.16.1): "
+  read NodeVersion
+  nvm install $NodeVersion
+  nvm alias default $NodeVersion
+else
+  echo "NVM installation required ..."
+fi
 
 echo -n "Enter git user name: "
 read GitUserName
